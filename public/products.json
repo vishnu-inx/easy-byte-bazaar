@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "name": "Lorem Ipsum Product 1",
+    "price": 29.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 2,
+    "name": "Lorem Ipsum Product 2",
+    "price": 39.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 3,
+    "name": "Lorem Ipsum Product 3",
+    "price": 49.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 4,
+    "name": "Lorem Ipsum Product 4",
+    "price": 19.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 5,
+    "name": "Lorem Ipsum Product 5",
+    "price": 59.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 6,
+    "name": "Lorem Ipsum Product 1",
+    "price": 29.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 7,
+    "name": "Lorem Ipsum Product 2",
+    "price": 39.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 8,
+    "name": "Lorem Ipsum Product 3",
+    "price": 49.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 9,
+    "name": "Lorem Ipsum Product 4",
+    "price": 19.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 10,
+    "name": "Lorem Ipsum Product 5",
+    "price": 59.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 11,
+    "name": "Lorem Ipsum Product 5",
+    "price": 59.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 12,
+    "name": "Lorem Ipsum Product 5",
+    "price": 59.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 13,
+    "name": "Lorem Ipsum Product 5",
+    "price": 59.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 14,
+    "name": "Lorem Ipsum Product 5",
+    "price": 59.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 15,
+    "name": "Lorem Ipsum Product 5",
+    "price": 59.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  },
+  {
+    "id": 16,
+    "name": "Lorem Ipsum Product 5",
+    "price": 59.99,
+    "image": "https://via.placeholder.com/150",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel justo non urna eleifend feugiat. Nulla facilisi."
+  }
+]
