@@ -1,8 +1,21 @@
-# React + Vite
+## EasyByte Bazaar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+- This is a simple demo project created using Vite + ReactJS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- We have used the latest version of ReactJS, and for styling, we have used Tailwind CSS to create an attractive user interface. Additionally, we've implemented a Skeleton UI for seamless performance.
+- Responsive UI
+
+## Getting Started
+
+- First, clone the repository from 'https://github.com/vishnu-inx/easy-byte-bazaar.git'
+- Create a .env file at the root folder and copy environment variables from the .env.sample file or copy and paste "VITE_BASE_URL=https://fakestoreapi.com"
+- Run `npm install`
+- Run `npm run dev`
+
+## Prerequisites
+
+- Node version 18 or a stable and compatible version.
