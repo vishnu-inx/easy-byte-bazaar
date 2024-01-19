@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import { fetchProduct } from '../../shared/service/product-service';
+import { fetchProductById } from '../../shared/service/product-service';
 import { SkeletonProductDetail } from '../../components/skeloton-card';
 
 function ProductDetail() {
 
     const { id } = useParams();
-    const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -14,7 +13,7 @@ function ProductDetail() {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const product = await fetchProduct(id);
+                const product = await fetchProductById(id);
                 setProduct(product);
                 setIsLoading(false);
             } catch (error) {
@@ -26,17 +25,9 @@ function ProductDetail() {
         fetchData();
     }, [id]);
 
-    const handleAdd = () => {
-        setQuantity((prevQuantity) => prevQuantity + 1);
-    };
-
-    const handleRemove = () => {
-        setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
-    };
-
     const handleBuy = () => {
         // Add your buy logic here (e.g., redirect to a checkout page)
-        alert(`Buying ${quantity} ${quantity === 1 ? 'product' : 'products'}`);
+        alert(`Buying product`);
     };
 
     const handleImageError = (event) => {
@@ -46,53 +37,35 @@ function ProductDetail() {
 
     return (
         <>
-            <h2 className="text-3xl font-semibold mt-8 mb-6 text-center capitalize">{product.category ? product.category : ''} Product</h2>
             {isLoading ? (
                 <SkeletonProductDetail />
             ) : (
-                <div className="container mx-auto my-8 p-6 bg-white shadow-md rounded-lg">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Product Image Column */}
-                        <div className="flex flex-col items-center justify-center">
-                            <img
-                                src={product.image || '/images/placeholder.jpg'}
-                                alt="Product title"
-                                className="w-full h-64 object-contain mb-4 rounded-md shadow-md"
-                                onError={handleImageError}
-                            />
-                            <h2 className="text-2xl font-semibold">{product.title}</h2>
-                            <p className="text-lg font-semibold mt-2">Price: {product.price}</p>
-                        </div>
+                <>
+                    <h2 className="text-3xl font-semibold mt-8 mb-6 text-center">{product.title}</h2>
+                    <div className="container mx-auto my-8 p-4 max-w-3xl flex flex-col items-center justify-center">
+                        {/* Product Image */}
+                        <img
+                            src={product.image || '/images/placeholder.jpg'} // Replace with actual image source
+                            alt="Product Image"
+                            className="w-96 h-64 object-fill mb-4 rounded-md shadow-md"
+                            onError={handleImageError}
+                        />
 
-                        {/* Product Details Column */}
-                        <div className="text-left">
-                            <p className="text-gray-600 mb-16">{product.description}</p>
+                        {/* Product Price */}
+                        <p className="text-xl font-semibold text-black-500 mb-2">$ {product.price}</p>
 
-                            <div className="flex items-center mb-4 space-x-2 justify-end">
-                                <button
-                                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 w-20"
-                                    onClick={handleRemove}
-                                >
-                                    -
-                                </button>
-                                <span className="text-lg">{quantity}</span>
-                                <button
-                                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 w-20"
-                                    onClick={handleAdd}
-                                >
-                                    +
-                                </button>
+                        {/* Product Details */}
+                        <p className="text-gray-700 w-96 max-[420px]:w-full mb-4">
+                            {product.description}
+                        </p>
 
-                                <button
-                                    className="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600 transition-colors duration-300 w-full sm:w-full md:w-3/5"
-                                    onClick={handleBuy}
-                                >
-                                    Buy Now
-                                </button>
-                            </div>
-                        </div>
+                        {/* Buy Button */}
+                        <button onClick={handleBuy} className="bg-blue-500 w-96 max-[420px]:w-full text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300">
+                            Buy Now
+                        </button>
+
                     </div>
-                </div>
+                </>
             )}
         </>
     )

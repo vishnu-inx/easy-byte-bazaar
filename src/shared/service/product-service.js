@@ -13,7 +13,7 @@ export const fetchProducts = async () => {
     }
 };
 
-export const fetchProduct = async (id) => {
+export const fetchProductById = async (id) => {
     try {
         const response = await axios.get(`${BASE_URL}/products/${id}`);
         return response.data;

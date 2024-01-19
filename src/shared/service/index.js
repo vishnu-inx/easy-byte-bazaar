@@ -1,8 +1,8 @@
-import { fetchProducts, fetchProduct, fetchProductByCategory, fetchProductByLimit, fetchCategories } from "./product-service";
+import { fetchProducts, fetchProductById, fetchProductByCategory, fetchProductByLimit, fetchCategories } from "./product-service";
 
 export {
     fetchProducts,
-    fetchProduct,
+    fetchProductById,
     fetchProductByCategory,
     fetchProductByLimit,
     fetchCategories
