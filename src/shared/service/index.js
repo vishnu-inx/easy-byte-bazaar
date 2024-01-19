@@ -1,3 +1,7 @@
-import { fetchProducts, fetchProduct } from "./product-service";
+import { fetchProducts, fetchProduct, fetchProductByCategory } from "./product-service";
 
-export { fetchProducts, fetchProduct };
+export {
+    fetchProducts,
+    fetchProduct,
+    fetchProductByCategory
+};

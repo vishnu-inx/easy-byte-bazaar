@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { fetchCategories } from '../../shared/service/product-service';
+import { Link } from 'react-router-dom';
 
 function Category() {
 
@@ -54,7 +55,7 @@ function Category() {
     }, []);
 
     return (
-        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-28">
+        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 mb-8">
             {isLoading ? (
                 <>
                     {[...Array(4)].map((_, index) => (
@@ -76,16 +77,18 @@ export default Category;
 
 const CategoryCard = ({ category }) => {
     return (
-        <div className="relative bg-white p-6 rounded-lg shadow-md overflow-hidden cursor-pointer">
-            <img
-                src={`/images/${category.image}`}
-                alt={category.title}
-                className="w-full h-40 object-cover mb-4 rounded-md shadow-md"
-            />
-            <div className="absolute bottom-0 left-0 right-0 top-44 p-4 text-black">
-                <h2 className="text-xl font-semibold">{category.title}</h2>
+        <Link to={`/products/${category.title}`}>
+            <div className="relative bg-white p-6 rounded-lg shadow-md overflow-hidden cursor-pointer">
+                <img
+                    src={`/images/${category.image}`}
+                    alt={category.title}
+                    className="w-full h-40 object-cover mb-4 rounded-md shadow-md"
+                />
+                <div className="absolute bottom-0 left-0 right-0 top-44 p-4 text-black">
+                    <h2 className="text-xl font-semibold">{category.title}</h2>
+                </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

@@ -1,7 +1,7 @@
 
 function ContactUs() {
     return (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center mt-8">
             <div className="container mx-auto flex flex-wrap justify-center">
                 <div className="w-full md:w-1/2 lg:w-1/3 p-4">
                     <AboutUs />
