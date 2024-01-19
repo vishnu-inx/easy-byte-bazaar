@@ -1,6 +1,9 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-const products = [
+const dummyProducts = [
     {
         "id": 1,
         "title": "Backpack Fits 15 Laptops",
@@ -52,36 +55,56 @@ const products = [
 ];
 
 function Dashboard() {
+
+    const [products, setProducts] = useState([])
+    const [isLoading, SetIsLoading] = useState(false);
+
+    useEffect(() => {
+        SetIsLoading(true);
+        setTimeout(() => {
+            setProducts(dummyProducts);
+            SetIsLoading(false);
+        }, 1000);
+    }, [])
+
+
     return (
-        // <Products />
         <div className="mt-4">
             {/* Top Banner */}
             <div className="p-4 text-black text-center">
                 <h1 className="text-2xl font-semibold">Dashboard</h1>
                 <p className="text-sm mb-4">Welcome</p>
-                <img
-                    src="/images/banner-image.png" // Replace with your actual image URL
-                    alt="Dashboard Banner"
-                    className="w-full h-96 object-cover mb-4 rounded-md"
-                />
+                {isLoading ? (
+                    <Skeleton height={384} style={{ marginBottom: '16px' }} />
+                ) : (
+                    <img
+                        src="/images/banner-image.png" // Replace with your actual image URL
+                        alt="Dashboard Banner"
+                        className="w-full h-96 object-cover mb-4 rounded-md"
+                    />
+                )}
             </div>
 
             {/* Product Grid */}
             <div className="container mx-auto my-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {products.map((product) => (
-                        <Link key={product.id} to={`product/${product.id}`}>
-                            <div className="bg-white p-4 shadow-md rounded-md cursor-pointer">
-                                <img
-                                    src={product.image}
-                                    alt={product.title}
-                                    className="w-full h-40 object-contain mb-2 rounded-md"
-                                />
-                                <p className="text-lg font-semibold mb-2">{product.title}</p>
-                                <p className="text-gray-500">${product.price}</p>
-                            </div>
-                        </Link>
-                    ))}
+                    {isLoading
+                        ? // Render skeleton when loading
+                        Array.from({ length: 4 }).map((_, index) => <SkeletonProduct key={index} />)
+                        : // Render actual product data when not loading
+                        products.map((product) => (
+                            <Link key={product.id} to={`product/${product.id}`}>
+                                <div className="bg-white p-4 shadow-md rounded-md cursor-pointer">
+                                    <img
+                                        src={product.image}
+                                        alt={product.title}
+                                        className="w-full h-40 object-contain mb-2 rounded-md"
+                                    />
+                                    <p className="text-lg font-semibold mb-2">{product.title}</p>
+                                    <p className="text-gray-500">${product.price}</p>
+                                </div>
+                            </Link>
+                        ))}
                 </div>
             </div>
         </div>
@@ -89,3 +112,11 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+const SkeletonProduct = () => (
+    <div className="bg-white p-4 shadow-md rounded-md cursor-pointer">
+        <Skeleton height={160} style={{ marginBottom: '8px' }} />
+        <Skeleton height={20} width={120} style={{ marginBottom: '4px' }} />
+        <Skeleton height={18} width={80} />
+    </div>
+);

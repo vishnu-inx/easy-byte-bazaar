@@ -38,8 +38,8 @@ const Products = () => {
 
     return (
         <div className="container mx-auto m-8">
-            <h2 className="text-3xl font-semibold mb-6 text-center">
-                {category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Featured'} Products
+            <h2 className="text-3xl font-semibold mb-6 text-center capitalize">
+                {category ? category : 'Featured'} Products
             </h2>
 
             {isLoading ? (

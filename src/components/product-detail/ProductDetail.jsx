@@ -19,7 +19,6 @@ function ProductDetail() {
                 const product = await fetchProduct(id);
                 setProduct(product);
                 setIsLoading(false);
-                console.log("product ...", product);
             } catch (error) {
                 console.error(error);
                 setIsLoading(false);
@@ -44,6 +43,7 @@ function ProductDetail() {
 
     return (
         <>
+            <h2 className="text-3xl font-semibold mt-8 mb-6 text-center capitalize">{product.category ? product.category : ''} Product</h2>
             {isLoading ? (
                 <SkeletonProductDetail />
             ) : (
@@ -52,9 +52,9 @@ function ProductDetail() {
                         {/* Product Image Column */}
                         <div className="flex flex-col items-center justify-center">
                             <img
-                                src={product.image ? 'https://via.placeholder.com/150' : 'https://via.placeholder.com/150'}
+                                src={product.image ? product.image : 'https://via.placeholder.com/150'}
                                 alt="Product title"
-                                className="w-full h-64 object-cover mb-4 rounded-md shadow-md"
+                                className="w-full h-64 object-contain mb-4 rounded-md shadow-md"
                             />
                             <h2 className="text-2xl font-semibold">{product.title}</h2>
                             <p className="text-lg font-semibold mt-2">Price: {product.price}</p>
@@ -62,7 +62,7 @@ function ProductDetail() {
 
                         {/* Product Details Column */}
                         <div className="text-left">
-                            <p className="text-gray-600 mb-4">{product.description}</p>
+                            <p className="text-gray-600 mb-16">{product.description}</p>
 
                             <div className="flex items-center mb-4 space-x-2 justify-end">
                                 <button
@@ -116,8 +116,8 @@ const SkeletonProductDetail = () => {
 
                 {/* Product Details Column */}
                 <div className="text-left">
-                    <p className="text-gray-600 mb-4 bg-gray-200 w-full h-12">
-                        <Skeleton className="h-12" />
+                    <p className="text-gray-600 mb-16 bg-gray-200 w-full h-12">
+                        <Skeleton className="h-20" />
                     </p>
 
                     <div className="flex items-center mb-4 space-x-2 justify-end">

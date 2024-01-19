@@ -1,6 +1,7 @@
 import axios from 'axios';
+import config from '../../config/config';
 
-const BASE_URL = 'https://fakestoreapi.com';
+const BASE_URL = config.baseUrl;
 
 export const fetchProducts = async () => {
     try {
