@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Dashboard from './components/dashboard/Dashboard.jsx';
-import Products from './components/products/Products.jsx';
-import ProductDetail from './components/product-detail/ProductDetail.jsx';
-import Category from './components/category/Category.jsx';
-import ContactUs from './components/contact-us/ContactUs.jsx';
+import { Dashboard, Products, ProductDetail, Category, ContactUs } from './pages/index.js';
 import NotFound from './components/not-found-page/NotFound.jsx';
 
 const router = createBrowserRouter([

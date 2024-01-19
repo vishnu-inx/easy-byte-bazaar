@@ -33,6 +33,16 @@ export const fetchProductByCategory = async (category) => {
     }
 };
 
+export const fetchProductByLimit = async (value) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/products?limit=${value}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        throw error;
+    }
+};
+
 export const fetchCategories = async () => {
     try {
         const response = await axios.get(`${BASE_URL}/products/categories`);

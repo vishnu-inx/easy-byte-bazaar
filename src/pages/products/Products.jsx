@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
-import { fetchProducts, fetchProductByCategory } from '../../shared/service/index';
 import { Link, useParams } from 'react-router-dom';
+import { fetchProducts, fetchProductByCategory } from '../../shared/service';
+import { SkeletonProduct } from '../../components/skeloton-card';
 
 const Products = () => {
 
     const { category } = useParams(null);
-
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -34,7 +32,10 @@ const Products = () => {
     }, [category]);
 
 
-
+    const handleImageError = (event) => {
+        // Set a default image source when an image error occurs
+        event.target.src = '/images/placeholder.jpg';
+    };
 
     return (
         <div className="container mx-auto m-8">
@@ -53,9 +54,10 @@ const Products = () => {
                     {products && products.map((product) => (
                         <div key={product.id} className="relative bg-white p-6 rounded-lg shadow-md transition-transform hover:scale-105 transform duration-300 ease-in-out">
                             <img
-                                src={product.image ? product.image : 'https://via.placeholder.com/150'}
+                                src={product.image || '/images/placeholder.jpg'}
                                 alt={product.title}
                                 className="w-full h-40 object-contain mb-4 rounded-md shadow-md"
+                                onError={handleImageError}
                             />
                             <p className="text-sm font-semibold mb-2 absolute top-2 right-2 p-2 bg-gray-500 text-white rounded-full">${product.price}</p>
                             <div className="mb-4">
@@ -76,19 +78,3 @@ const Products = () => {
 };
 
 export default Products;
-
-const SkeletonProduct = () => (
-    <div className="relative bg-white p-6 rounded-lg shadow-md transition-transform hover:scale-105 transform duration-300 ease-in-out">
-        <Skeleton height={160} />
-        <p className="text-lg font-semibold mb-2 absolute top-8 right-8"><Skeleton width={40} /></p>
-        <div className="mb-4">
-            <p className="text-lg font-semibold mb-2"><Skeleton width={150} /></p>
-            <div className="justify-between items-center flex-col">
-                <button className="text-blue-500 underline w-full mb-5"><Skeleton width={100} /></button>
-                <button className="bg-green-500 w-full text-white px-4 py-2 rounded-md hover:bg-green-600 transition-colors duration-300">
-                    <Skeleton width={80} />
-                </button>
-            </div>
-        </div>
-    </div>
-);

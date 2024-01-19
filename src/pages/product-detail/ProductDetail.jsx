@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 import { useParams } from "react-router-dom";
 import { fetchProduct } from '../../shared/service/product-service';
+import { SkeletonProductDetail } from '../../components/skeloton-card';
 
 function ProductDetail() {
 
+    const { id } = useParams();
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
-    const { id } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -41,6 +39,11 @@ function ProductDetail() {
         alert(`Buying ${quantity} ${quantity === 1 ? 'product' : 'products'}`);
     };
 
+    const handleImageError = (event) => {
+        // Set a default image source when an image error occurs
+        event.target.src = '/images/placeholder.jpg';
+    };
+
     return (
         <>
             <h2 className="text-3xl font-semibold mt-8 mb-6 text-center capitalize">{product.category ? product.category : ''} Product</h2>
@@ -52,9 +55,10 @@ function ProductDetail() {
                         {/* Product Image Column */}
                         <div className="flex flex-col items-center justify-center">
                             <img
-                                src={product.image ? product.image : 'https://via.placeholder.com/150'}
+                                src={product.image || '/images/placeholder.jpg'}
                                 alt="Product title"
                                 className="w-full h-64 object-contain mb-4 rounded-md shadow-md"
+                                onError={handleImageError}
                             />
                             <h2 className="text-2xl font-semibold">{product.title}</h2>
                             <p className="text-lg font-semibold mt-2">Price: {product.price}</p>
@@ -91,52 +95,7 @@ function ProductDetail() {
                 </div>
             )}
         </>
-
     )
 }
 
 export default ProductDetail;
-
-const SkeletonProductDetail = () => {
-    return (
-        <div className="container mx-auto my-8 p-6 bg-white shadow-md rounded-lg">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Product Image Column */}
-                <div className="flex flex-col items-center justify-center">
-                    <div className="w-full h-64 mb-4 bg-gray-200 rounded-md shadow-md">
-                        <Skeleton className="h-64" />
-                    </div>
-                    <h2 className="text-2xl font-semibold bg-gray-200 w-3/4 h-8 mb-2">
-                        <Skeleton className="h-8" />
-                    </h2>
-                    <p className="text-lg font-semibold bg-gray-200 w-1/2 h-6 mt-2">
-                        <Skeleton className="h-6" />
-                    </p>
-                </div>
-
-                {/* Product Details Column */}
-                <div className="text-left">
-                    <p className="text-gray-600 mb-16 bg-gray-200 w-full h-12">
-                        <Skeleton className="h-20" />
-                    </p>
-
-                    <div className="flex items-center mb-4 space-x-2 justify-end">
-                        <button className="bg-blue-500 h-9 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 w-20">
-                            <Skeleton width={20} height={9} />
-                        </button>
-                        <span className="text-lg w-6 bg-gray-200 h-9">
-                            <Skeleton width={6} height={9} />
-                        </span>
-                        <button className="bg-blue-500 h-9 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300 w-20">
-                            <Skeleton width={20} height={9} />
-                        </button>
-
-                        <button className="bg-green-500 h-9 text-white px-6 py-2 rounded-md hover:bg-green-600 transition-colors duration-300 w-full sm:w-full md:w-3/5">
-                            <Skeleton width="100%" height={9} />
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};

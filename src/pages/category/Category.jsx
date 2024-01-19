@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
-import { fetchCategories } from '../../shared/service/product-service';
 import { Link } from 'react-router-dom';
+import { fetchCategories } from '../../shared/service';
+import { SkeletonCategoryCard } from '../../components/skeloton-card';
 
 function Category() {
 
@@ -79,31 +78,25 @@ function Category() {
 export default Category;
 
 const CategoryCard = ({ category }) => {
+
+    const handleImageError = (event) => {
+        // Set a default image source when an image error occurs
+        event.target.src = '/images/placeholder.jpg';
+    };
+
     return (
         <Link to={`/products/${category.title}`}>
             <div className="relative bg-white p-6 rounded-lg shadow-md overflow-hidden cursor-pointer">
                 <img
-                    src={`/images/${category.image}`}
+                    src={`/images/${category.image}` || '/images/placeholder.jpg'}
                     alt={category.title}
                     className="w-full h-40 object-cover mb-4 rounded-md shadow-md"
+                    onError={handleImageError}
                 />
                 <div className="absolute bottom-0 left-0 right-0 top-44 p-4 text-black">
                     <h2 className="text-xl font-semibold capitalize">{category.title}</h2>
                 </div>
             </div>
         </Link>
-    );
-};
-
-const SkeletonCategoryCard = () => {
-    return (
-        <div className="relative bg-white p-6 rounded-lg shadow-md overflow-hidden cursor-pointer">
-            <Skeleton height={160} className="w-full h-40 object-cover mb-4 rounded-md shadow-md" />
-            <div className="absolute bottom-0 left-0 right-0 top-44 p-4 text-black">
-                <h2 className="text-xl font-semibold">
-                    <Skeleton width={100} />
-                </h2>
-            </div>
-        </div>
     );
 };
